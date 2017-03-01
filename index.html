@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<style>
+#dragThis { 
+ min-height: 300px;
+ max-height: 650px;
+ width: 94%;
+ max-width: 600px;
+ height: 60%;
+ padding: 0em;
+ border: 1px solid #ccc;
+ background-color: #fcfcfc;
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ transition: 0.3s;
+ border-radius: 1em }
+body{ font-family: sans-serif }
+.card:hover {  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)} 
+</style>
+  <script>
+$(document).on("pagecreate","#pageone",function(){
+  $("#dragThis").on("swiperight",function(){
+    $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("goodbanner").style.display = "block";
+     document.getElementById("neutralbanner").style.display = "none";
+    document.getElementById("badbanner").style.display = "none";
+    $('#dragThis').addClass('animated bounceOutRight');
+    setTimeout(function(){
+      document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      $('#dragThis').removeClass('animated bounceOutRight');
+      $('#dragThis').addClass('animated fadeIn');
+    }, 1000)  });  
+    $("#dragThis").on("swipeleft",function(){
+      $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("badbanner").style.display = "block";
+    document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "none";
+      $('#dragThis').addClass('animated bounceOutLeft');
+    setTimeout(function(){
+      document.getElementById("badbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      $('#dragThis').removeClass('animated bounceOutLeft');
+      $('#dragThis').addClass('animated fadeIn');
+    }, 1000) }); 
+  function rightSwipe(){
+    $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("goodbanner").style.display = "block";
+     document.getElementById("neutralbanner").style.display = "none";
+    document.getElementById("badbanner").style.display = "none";
+    $('#dragThis').addClass('animated bounceOutRight');
+    setTimeout(function(){
+      document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      $('#dragThis').removeClass('animated bounceOutRight');
+      $('#dragThis').addClass('animated fadeIn') }, 1000) }
+  function leftSwipe(){
+      $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("badbanner").style.display = "block";
+    document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "none";
+      $('#dragThis').addClass('animated bounceOutLeft');
+    setTimeout(function(){
+      document.getElementById("badbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      $('#dragThis').removeClass('animated bounceOutLeft');
+      $('#dragThis').addClass('animated fadeIn');
+    }, 1000) }
+  $(".fa-times").click(function(){
+      $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("badbanner").style.display = "block";
+    document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "none";
+      $('#dragThis').addClass('animated bounceOutLeft');
+    setTimeout(function(){
+      document.getElementById("badbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      $('#dragThis').removeClass('animated bounceOutLeft');
+      $('#dragThis').addClass('animated fadeIn');
+    }, 1000) });
+  $(".fa-heart").click(function(){
+    $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("goodbanner").style.display = "block";
+     document.getElementById("neutralbanner").style.display = "none";
+    document.getElementById("badbanner").style.display = "none";
+    $('#dragThis').addClass('animated bounceOutRight');
+    setTimeout(function(){
+      document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      $('#dragThis').removeClass('animated bounceOutRight');
+      $('#dragThis').addClass('animated fadeIn');
+    }, 1000) }) });
+</script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></head>
+<body>
+<div data-role="page" id="pageone">
+  <div data-role="header"> <h1>Twinder</h1>  </div>
+  <div data-role="main" class="ui-content">
+    <center> <div id="dragThis" class = "card">
+<div id = "goodbanner" style = "display: none; border-radius: 1em 1em 0 0; color: #efefef; background-color: green; width: 100%; height: 80px; font-weight: bold"> <center style = "font-size: 25pt; padding-top: 20px">LIKE</center> </div>
+<div id = "badbanner" style = "display: none; border-radius: 1em 1em 0 0; color: #efefef; background-color: #bf151d; width: 100%; height: 80px; font-weight: bold">
+<center style = "font-size: 25pt; padding-top: 20px">DISLIKE</center></div>
+<div id = "neutralbanner" style = "text-shadow: none; opacity: 1; border-radius: 1em 1em 0 0; color: #efefef; background-color: #2176ff; width: 100%; height: 80px; font-weight: bold">
+<center style = "font-size: 25pt; padding-top: 20px">SWIPE</center> </div>    
+<div style = "position: relative; text-align: center; padding-top: 5px">
+ <h1 id = "username" style = "font-weight: normal; font-size: 20pt;">Don and Juan, 22</h1>
+ <h2 id = "city" style = "font-weight: bold; font-size: 30pt">Chicago, Il</h2>
+ <i style = "font-size: 60pt; padding-right: 20px; color: red" class="fa fa-times" aria-hidden="true"></i><i style = "margin-top: 65px; font-size: 50pt; padding-left: 20px; color: green" class="fa fa-heart" aria-hidden="true"></i>
+</div></div> </center></div>
+  <div data-role="footer"> <h1>Built by <a href = "http://www.michaelsitver.com">Michael Sitver</a></h1> </div> </div> 
+</body>
+</html>
