@@ -1,4 +1,4 @@
-# Simplest Swipe Cards *By [Michael Sitver](http://www.Michaelsitver.com)
+# Simplest Swipe Cards  *By [Michael Sitver](http://www.Michaelsitver.com)*
 
 # Introduction:
 These are the simplest, most beautiful Tinder swipe cards on the web. They don't require Node.JS, or React, or hosting a new stylesheet, or anything of the sort. **You can literally copy/paste them onto your existing static website**.
