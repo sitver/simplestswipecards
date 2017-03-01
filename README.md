@@ -4,6 +4,7 @@
 These are the simplest, most beautiful Tinder swipe cards on the web. They don't require Node.JS, or React, or hosting a new stylesheet, or anything of the sort. **You can literally copy/paste them onto your existing static website**.
 
 They're also extremely lightweight.
+**Demo the cards [here](http://pleasant-flag.surge.sh)**
 # Stack:
 They're written in:
 - HTML
