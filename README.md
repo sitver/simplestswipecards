@@ -15,3 +15,4 @@ That's it!
 There are a few small dependencies, but they're all hosted for free on solid CDNs, and well-supported on StackOverflow:
 - JQuery, JqueryUI, and JQuery Mobile (the magic that makes these work)
 - FontAwesome - optional, but included (for the two icons)
+- Animated library (for those beautiful swipes and fades)
