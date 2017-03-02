@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Washingtinder</title>
+<meta property="og:title" content="Washingtinder" />
+<link rel="icon" 
+      type="image/png" 
+      href="http://washingtinder.com/favicon11.ico">
+<meta property="og:image" content="http://i.imgur.com/Woa60ds.png" />
+<meta name="description" content="Find Washington's match for you. Brought to you by the NSA. (A Tinder Parody)">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<style>
+#dragThis, .dragThis { 
+ width: 97%;
+ max-width: 310px;
+ min-width: 220px;
+ height: 382px;
+ padding: 0em;
+ border: 1px solid #ccc;
+ background-color: #fcfcfc;
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ transition: 0.3s;
+ border-radius: 8px }
+body{ font-family: sans-serif }
+.card:hover {  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)} 
+  .animated { visibility: visible !important; }
+</style>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91233701-3', 'auto');
+  ga('send', 'pageview');
+
+</script> 
+  <script>
+  var gender = "unknown";
+var i = -1;
+ var women = [{name: "Rep. Tulsi Gabbard", title: "Congresswoman", photo: "http://media.washtimes.com.s3.amazonaws.com/media/image/2015/10/13/AP_104281239272.jpg"},{name: "Justice Ruth Bader Ginsburg",title: "Supreme Court Justice",photo: "http://i2.cdn.cnn.com/cnnnext/dam/assets/111102115632-justice-ruth-bader-ginsburg-story-top.jpg"},{name: "Sen. Kirsten Gillibrand", title: "U.S Senator", photo: "https://s-media-cache-ak0.pinimg.com/originals/db/d4/c5/dbd4c5a06b9f69755f53cce2ae9d7a05.jpg"},{name: "S.E Cupp",title:"Political Columnist", photo: "http://3tig6l1jk542ohu6241qxor1.wpengine.netdna-cdn.com/wp-content/uploads/2012/09/S.E.-Cupp.jpg"},{name: "Sec. Betsy Devos", title: "Secretary of Education", photo: "http://www.philanthropyroundtable.org/images/made/file_uploads/Betsy_DeVos__Angie_5-08_-_child_she_mentors_at_Potters_House_School_525_345.jpg"},{name:"Rep. Stacey Plaskett",title: "U.S House Delegate",photo:"http://d15h3ts9pue03r.cloudfront.net/wp-content/uploads/2016/07/stacey-plaskett-2.jpg?x23406"},{name: "Kellyanne Conway", title: "Counselor to the president. Marketer to Ivanka Trump", photo: "http://popcrush.com/files/2017/01/kellyanne-conway-inauguration-outfit1.jpg"},{name:"Rep. Kyrsten Sinema",title: "Congresswoman", photo: "https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr06/2013/9/6/9/enhanced-buzz-32083-1378475229-29.jpg"},{name:"Rep. Kathleen Rice",title:"Congresswoman",photo:"http://assets.nydailynews.com/polopoly_fs/1.1520288.1384746902!/img/httpImage/image.jpg_gen/derivatives/article_750/rice18n-4-web.jpg"},{name:"Rep. Elise Stefanik",title: "Congresswoman",photo: "http://static.makers.com/field/image/elise-stefanik-w724.jpg"},{name:"Rep. Stephanie Sandlin",title: "Former Congresswoman",photo:"http://www.augie.edu/sites/default/files/Stephanie.Herseth.Sandlin.parallax.4.jpg"},{name: "Ivanka Trump",title:"First daughter",photo: "http://akns-images.eonline.com/eol_images/Entire_Site/2016621/rs_1024x759-160721192841-1024.Ivanka-Trump-RNC-cleveland.tt.072116.jpg"},{name:"Amb. Nikki Haley",title: "UN Ambassador",photo: "https://www-tc.pbs.org/weta/washingtonweek/sites/default/files/20160112-Nikki-Haley.jpg"},{name: "Minority Leader Nancy Pelosi",title: "House Minority Leader", photo:"http://s3-origin-images.politico.com/2012/11/121112_nancy_pelosi_ap_605.jpg"},{name: "Sec. Elaine Chao",title: "Secretary of Transportation",photo: "http://www.elainelchao.com/images/uploads/pages_images/elaine-chao-biography.jpg"},{name: "Anne-Marie Slaughter",title: "President, New America",photo:"https://si.wsj.net/public/resources/images/RV-AK788_WKCONF_G_20130614133701.jpg"},{name: "Sen. Joni Ernst",title:"U.S Senator", photo:"https://www.rawstory.com/wp-content/uploads/2014/06/Joni-Ernst-800x430.png"},{name:"Sen. Kamala Harris",title:"U.S Senator",photo:"http://www.thefrontpageonline.com/wp-content/uploads/2015/03/kamala_harris-1280x960.jpg"},{name: "Sen. Elizabeth Warren",title: "U.S Senator",photo:"https://c.o0bg.com/rf/image_960w/Boston/2011-2020/2012/09/26/BostonGlobe.com/Metro/Images/kreiter_warrenfamily6_met.jpg"},{name:"Hallie Jackson",title: "Whitehouse Correspondent", photo: "http://i.imgur.com/EPynKiK.jpg"},{name: "<b>Share Washingtinder</b>", title:'<iframe style = "margin-bottom: 10px;" src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwashingtinder.com&layout=button&size=small&mobile_iframe=true&appId=171773616223724&width=58&height=20" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br><a style = "padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; margin-top: 5px; background-color: #55acee; color: white; font-size: 10pt; border-radius: 3px; border-width: 1px; border-color: black; text-decoration: none;" href = "https://twitter.com/intent/tweet?url=http%3A%2F%2FWashingtinder.com&via=Msitver&text=Find%20the%20NSA%27s%20match%20for%20you...">Tweet</a>', photo: "http://i.imgur.com/LlQ4z9T.png"}]    
+var men = [{name: "Speaker Paul Ryan", title: "Speaker of the House",photo:"http://static2.politico.com/dims4/default/273ab82/2147483647/resize/1160x%3E/quality/90/?url=http%3A%2F%2Fstatic.politico.com%2Fb8%2F1d%2F49ba6d4445a5a190717f236d0a10%2F151210-paul-ryan-1160-gty.jpg"},{name:"Chuck Todd",title: "Host, Meet the Press", photo: "http://a4.img.talkingpointsmemo.com/image/upload/c_fill,fl_keep_iptc,g_faces,h_365,w_652/drrgkjnfpvhqj3w3rrds.jpg"},{name:"Sen. Martin Heinrich", title:"U.S Senator", photo:"http://greginhollywood.com/wordpress/wp-content/uploads/121107053753-martin-heinrich-story-top.jpg"},{name:"Pres. Vladimir Putin", title:"President of Russian Federation", photo:"http://herbeat.com/wp-content/uploads/2014/04/vladimir_putin_51.jpg"},{name:"Bret Baier",title:"News Anchor", photo: "http://c510383.r83.cf2.rackcdn.com/photos/Publications_Repository/2008/3/17/custom/34536-344x229.JPG"},{name:"Senator Bernie Sanders", title:"U.S Senator",photo:"http://www.motherjones.com/files/bernie_2.jpg"},{name:"Senator Marco Rubio", title:"U.S Senator",photo:"http://conservativeamerica-online.com/wordpress/wp-content/uploads/2015/11/rubiofootball.jpg"},{name:"Jared Kushner", title: "Senior Advisor to the President",photo:"http://cbsnews2.cbsistatic.com/hub/i/r/2016/11/16/ca219a6d-fcef-4e4b-a3ab-1d55cb1ef0d7/thumbnail/1200x630/319ec1d412f3a898ffddcda3bdeb6ddd/jaredkushner-1181583-640x360.jpg"},{name:"Sen. Jeff Flake", title:"U.S Senator", photo: "http://www.tucsonsentinel.com/files/entryimages/13-hardball-smile-full_0616.jpg"},{name: "Carlos Danger",title: "Former Congressman", photo:"http://img.huffingtonpost.com/asset/2000_1000/56faf9cf1500002a000b372b.jpeg?cache=sibx1db7lo"},{name:"Gov. Scott Walker", title:"Governor of Wisconsin",photo: "https://cdn.theatlantic.com/assets/media/img/mt/2015/09/RTS1TJM/lead_960.jpg?1442892302"},{name: "Rep. Hakeem Jeffries", title:"U.S Congressman",photo: "http://i2.cdn.cnn.com/cnnnext/dam/assets/141209100133-jeffries-at-garner-site-story-top.jpg"},{name:"Sen. Lindsey Graham", title:"U.S Senator",photo:"https://cdn1.ijr.com/wp-content/uploads/2015/10/GettyImages-494621846.jpg"},{name:"Rep. Marc Veasey", title:"U.S Congressman",photo:"http://www.star-telegram.com/news/local/qeaa9v/picture23540365/ALTERNATES/FREE_960/Veasey%20works%20FWFD%201%20(2)"},{name:"Rep. Eric Swalwell", title:"U.S Congressman",photo: "https://onedublin.files.wordpress.com/2013/01/eric-swalwell-with-new-congressional-office-keys-1.jpg"},{name:"Pres. Vladimir Putin", title:"President of Russian Federation",photo:"http://herbeat.com/wp-content/uploads/2014/04/vladimir_putin_51.jpg"},{name:"Reince Priebus", title:"Whitehouse Chief of Staff",photo:"http://twt-thumbs.washtimes.com/media/image/2014/08/07/8_7_2014_rnc8201_c0-518-2416-1926_s885x516.jpg?6190988ef0d44daf7fc320fe23b454b577831c2b"},{name:"Sri Srinivasan",title:"Federal Appeals Judge",photo:"https://images.successstory.com/img_people/family/620Xauto/family3_1455716319.jpg"},{name:"Rep. Aaron Schock",title:"U.S Congressman",photo:"http://www.newnownext.com/wp-content/uploads/2012/08/aaron-schock-shirtless.jpg"},{name: "Sen. Cory Booker",title:"U.S Senator",photo: "http://wepartypatriots.com/wp/wp-content/uploads/2013/03/CoryBooker.jpg"},{name: "Ken Bone", title: "Political Consultant", photo: "http://static4.businessinsider.com/image/580a11008d83b44b4a8b4be3-480/ken-bone.png"},{name: "<b>Share Washingtinder</b>", title:'<iframe style = "margin-bottom: 10px;" src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwashingtinder.com&layout=button&size=small&mobile_iframe=true&appId=171773616223724&width=58&height=20" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br><a style = "padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; margin-top: 5px; background-color: #55acee; color: white; font-size: 10pt; border-radius: 3px; border-width: 1px; border-color: black; text-decoration: none;" href = "https://twitter.com/intent/tweet?url=http%3A%2F%2FWashingtinder.com&via=Msitver&text=Find%20the%20NSA%27s%20match%20for%20you...">Tweet</a>', photo: "http://i.imgur.com/LlQ4z9T.png"}]
+ function nextWoman(){
+   i = i + 1;
+  setTimeout(function(){
+  if(i > 0 ) {document.getElementById("propic").style.opacity = 0};
+  document.getElementById("propic").src = women[i].photo;
+  document.getElementById("username").innerHTML = women[i].name;
+  document.getElementById("job").innerHTML = women[i].title;
+  }, 150)
+}
+function nextMan(){
+   i = i + 1;
+  setTimeout(function(){
+  if(i > 0 ) {document.getElementById("propic").style.opacity = 0}; 
+  document.getElementById("propic").src = men[i].photo;
+  document.getElementById("username").innerHTML = men[i].name;
+  document.getElementById("job").innerHTML = men[i].title;
+  }, 150)
+}    
+$(document).on("pagecreate","#pageone",function(){
+  $("#dragThis").on("swiperight",function(){
+    $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("goodbanner").style.display = "block";
+     document.getElementById("neutralbanner").style.display = "none";
+    document.getElementById("badbanner").style.display = "none";
+    if(gender == "male"){ ga('send', 'event', 'Swipe', 'Right-swipe', men[i].name)}else{ga('send', 'event', 'Swipe', 'Right-swipe', women[i].name)};
+    $('#dragThis').addClass('animated bounceOutRight');
+    nextCard();
+    setTimeout(function(){
+      document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      setTimeout(function(){$('#dragThis').removeClass('animated bounceOutRight')}, 250);
+      setTimeout(function(){
+      document.getElementById("propic").style.opacity = 1;
+      $('#dragThis').addClass('animated fadeIn')}, 400);
+    }, 1000)  });  
+    $("#dragThis").on("swipeleft",function(){
+      $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("badbanner").style.display = "block";
+    document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "none";
+      if(gender == "male"){ ga('send', 'event', 'Swipe', 'Left-swipe', men[i].name)}else{ga('send', 'event', 'Swipe', 'Left-swipe', women[i].name)};
+      $('#dragThis').addClass('animated bounceOutLeft');
+      nextCard();
+    setTimeout(function(){
+      document.getElementById("badbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      setTimeout(function(){$('#dragThis').removeClass('animated bounceOutLeft')}, 250);
+setTimeout(function(){
+      document.getElementById("propic").style.opacity = 1;
+      $('#dragThis').addClass('animated fadeIn')}, 400);
+    }, 1000) }); 
+  $(".fa-times").click(function(){
+      $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("badbanner").style.display = "block";
+    document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "none";
+    if(gender == "male"){ ga('send', 'event', 'Swipe', 'Left-swipe', men[i].name)}else{ga('send', 'event', 'Swipe', 'Left-swipe', women[i].name)};
+      $('#dragThis').addClass('animated bounceOutLeft');
+    nextCard();
+    setTimeout(function(){
+      document.getElementById("badbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      setTimeout(function(){$('#dragThis').removeClass('animated bounceOutLeft')}, 250);
+setTimeout(function(){
+      document.getElementById("propic").style.opacity = 1;
+      $('#dragThis').addClass('animated fadeIn')}, 400);
+    }, 1000) });
+  $(".fa-heart").click(function(){
+    $('#dragThis').removeClass('animated fadeIn');
+    document.getElementById("goodbanner").style.display = "block";
+     document.getElementById("neutralbanner").style.display = "none";
+    document.getElementById("badbanner").style.display = "none";
+    if(gender == "male"){ ga('send', 'event', 'Swipe', 'Right-swipe', men[i].name)}else{ga('send', 'event', 'Swipe', 'Right-swipe', women[i].name)};
+    $('#dragThis').addClass('animated bounceOutRight');
+    nextCard();
+    setTimeout(function(){
+      document.getElementById("goodbanner").style.display = "none";
+       document.getElementById("neutralbanner").style.display = "block";
+      setTimeout(function(){$('#dragThis').removeClass('animated bounceOutRight')}, 250);
+setTimeout(function(){
+      document.getElementById("propic").style.opacity = 1;
+      $('#dragThis').addClass('animated fadeIn')}, 400);
+    }, 1000) }) 
+$("#choosewomen").click(function(){
+       document.getElementById("gendercard").style.display = "none";
+  document.getElementById("dragThis").style.display = "block";
+  gender = "female";
+      nextWoman(); 
+})
+$("#choosemen").click(function(){
+  document.getElementById("gendercard").style.display = "none";
+       document.getElementById("dragThis").style.display = "block";
+       nextMan(); 
+  gender = "male";
+})
+function nextCard(){
+  if(gender == "male"){
+    nextMan();
+  }else{
+    nextWoman();
+  }
+ var randomdigit = Math.floor(Math.random() * 6) + 1;
+  if(randomdigit == 3){//randomdigit == 3
+  setTimeout(function(){
+    $('#match').removeClass('bounceOutUp');
+    $('#match').addClass('animated bounceInDown');
+  },500)
+    setTimeout(function(){
+     $('#match').removeClass('bounceInDown');
+    $('#match').addClass('bounceOutUp');
+     setTimeout(function(){ $('#match').removeClass('animated bounceOutUp')},3000)
+  },3000)}
+  
+}
+});
+
+</script> 
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></head>
+<body>
+<div data-role="page" id="pageone">
+      <center><div id = "match" style = "position: fixed; text-align: center; visibility: hidden; border-top-right-radius: 0; border-top-left-radius: 0; border-radius: 6px; width: 100%; background-color: #003fa5; color: white; height: 60px; z-index: 2">
+  <center style = "font-weight: bold; font-size: 14pt; padding-top: 12px">NEW MATCH!</center> </div></center>
+  <div style = "background-color: white; font-size" data-role="header"> <h1 style = "margin: 0; font-weight: normal; color: #bf151d"><b style = "color: blue">WASHING🏛️</b>T<b style = "color: #800080"></b>INDER</h1>  </div>
+  <div data-role="main" class="ui-content">
+          <!--Genderpicker -->
+    <center> <div class = "dragThis" id = "gendercard" style = "background-color: white;">
+     <h1 style = "font-size: 14pt; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 5px">
+       Find Love In a Hopeless Place:
+      </h1>
+    <h1 style = "font-size: 12pt; margin-left: 10px; margin-right: 10px; margin-top: 5px; margin-bottom: 30px">I'm looking for...</h1>
+      <i id = "choosemen" style = "color: blue; font-size: 130pt; margin-right: 15px;" class="fa fa-male" aria-hidden="true"></i> <i id = "choosewomen" style = "margin-left: 15px; color: blue; font-size: 130pt; color: #bf151d"  class="fa fa-female" aria-hidden="true"></i>
+    <br><h1 style = "font-size: 15pt;">
+      Political Insiders
+      </h1>
+      </div></center>
+     <!--Actual cards -->
+ <center> <div style = "display: none" id="dragThis" class = "card">
+
+<div id = "goodbanner" style = "display: none; border-radius: 8px 8px 0 0; color: #fcfcfc; background-color: green; width: 100%; height: 40px; font-weight: bold"> <center style = "font-size: 14pt; padding-top: 10px">Approve</center> </div>
+<div id = "badbanner" style = "display: none; border-radius: 8px 8px 0 0; color: #fcfcfc; background-color: #bf151d; width: 100%; height: 40px; font-weight: bold">
+<center style = "font-size: 14pt; padding-top: 10px">VETO</center></div>
+<div id = "neutralbanner" style = "text-shadow: none; opacity: 1; border-radius: 8px 8px 0 0; color: #fcfcfc; background-color: #2176ff; width: 100%; height: 40px; font-weight: bold">
+<center style = "font-size: 14pt; padding-top: 10px">SWIPE</center> </div>    
+<div style = "padding-bottom: 5px; position: relative; text-align: center">
+ <div class = "img-container" style = "margin-bottom: 6px; overflow: hidden; max-height: 230px; width: 100%;">
+  <img id = "propic" style = "width: 100%; height: auto" src = "http://media.washtimes.com.s3.amazonaws.com/media/image/2015/10/13/AP_104281239272.jpg"></img>
+  </div>
+ <h1 id = "username" style = "margin: 0; font-weight: normal; font-size: 14pt;">Rep. Tulsi Gabbard</h1>
+ <h2 id = "job" style = "line-height: 0.8; margin: 0; font-weight: bold; font-size: 16pt">Congresswoman</h2>
+
+ <div class = "thebtns" style = "padding-top: 3px; padding-bottom: 5px;">
+      <i style = " font-size: 42pt; padding-right: 30px; color: red" class="fa fa-times" aria-hidden="true"></i>
+   <i style = "font-size: 36pt; padding-left: 30px; color: green" class="fa fa-heart" aria-hidden="true"></i>
+      </div>
+</div>      
+      </div> </center></div>
+  <center>
+     <a href="https://twitter.com/Msitver" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @Msitver</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+    <div style = "width: 100%" data-role="footer"> <h1 style = "font-size: 10pt">Not associated with Tinder inc. A Parody by <a href = "http://www.michaelsitver.com">Michael Sitver</a></h1> </div>
+    <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwashingtinder.com&layout=button&size=small&mobile_iframe=true&appId=171773616223724&width=58&height=20" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+    <br><a style = "font-weight: normal; text-decoration: none; padding-left: 10px; padding-right: 10px; padding: 5px; background-color: #55acee; color: white; font-size: 10pt; border-radius: 3px; border-width: 1px; border-color: black" href = "https://twitter.com/intent/tweet?url=http%3A%2F%2FWashingtinder.com&via=Msitver&text=Find%20the%20NSA%27s%20match%20for%20you...">Tweet This</a>
+    </div></center>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body>
+
+</html>
